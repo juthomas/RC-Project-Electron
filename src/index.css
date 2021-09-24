@@ -19,6 +19,7 @@ video {
 }
 
 .ctrl-div {
+  margin-top: 100px;
   position: relative;
 }
 
@@ -63,18 +64,20 @@ video {
 #downProgress {
   -webkit-transform: rotate(90deg);
   position: absolute;
-  top: 40px;
+  top: 60px;
   left: 300px;
 }
+
 #leftProgress {
+  -webkit-transform: rotate(180deg);
   position: absolute;
-  top: 40px;
-  left: 200px;
+  top: 31px;
+  left: 270px;
 }
 #rightProgress {
   position: absolute;
-  top: 40px;
-  left: 400px;
+  top: 31px;
+  left: 330px;
 }
 
 
