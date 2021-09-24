@@ -1,0 +1,84 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+video {
+  width: 100%;
+  height: auto;
+  /* height: 400px; */
+}
+
+@media screen and (min-width: 2000px) {
+  video {
+    width: 60%;
+    height: auto;
+    /* height: 400px; */
+  }
+}
+
+.ctrl-div {
+  position: relative;
+}
+
+.ctrl-button {
+  width: 60px;
+}
+
+.ctrl-progress {
+  width: 50px;
+}
+
+#upButton {
+  position: absolute;
+  top: 0px;
+  left: 90px;
+}
+
+#downButton {
+  position: absolute;
+  top: 40px;
+  left: 90px;
+}
+
+#leftButton {
+  position: absolute;
+  top: 40px;
+  left: 30px;
+}
+
+#rightButton {
+  position: absolute;
+  top: 40px;
+  left: 150px;
+}
+
+#upProgress {
+  -webkit-transform: rotate(-90deg);
+  position: absolute;
+  top: 0px;
+  left: 300px;
+}
+#downProgress {
+  -webkit-transform: rotate(90deg);
+  position: absolute;
+  top: 40px;
+  left: 300px;
+}
+#leftProgress {
+  position: absolute;
+  top: 40px;
+  left: 200px;
+}
+#rightProgress {
+  position: absolute;
+  top: 40px;
+  left: 400px;
+}
+
+
+body {
+  text-align: center;
+  padding-top: 20px;
+}

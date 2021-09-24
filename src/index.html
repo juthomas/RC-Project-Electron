@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>RC Project</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <script defer src="render.js"></script>
+  </head>
+  <body class="content">
+    <h1>RC Project</h1>
+
+    <video></video>
+    <!-- <video id="video" height="480" width="800" autoplay></video> -->
+    <h2>Recording : </h2> 
+    <button id="startBtn" class="button is-primary">Start</button>
+    <button id="stopBtn" class="button is-warning">Stop</button>
+
+    <hr />
+
+    <button id="videoSelectBtn" class="button is-text">
+      Choose a Video Source
+    </button>
+    <button id="cameraSelectBtn" class="button is-text">
+      Choose a Camera Source
+    </button>
+
+    <div class="ctrl-div">
+      <button id="upButton" class="button ctrl-button">UP</button>
+      <button id="downButton" class="button ctrl-button">DOWN</button>
+      <button id="leftButton" class="button ctrl-button">LEFT</button>
+      <button id="rightButton" class="button ctrl-button">RIGHT</button>
+      <progress id="upProgress" class="progress ctrl-progress" value="70" max="100">70 %</progress>
+      <progress id="downProgress" class="progress ctrl-progress" value="70" max="100">70 %</progress>
+      <progress id="leftProgress" class="progress ctrl-progress" value="70" max="100">70 %</progress>
+      <progress id="rightProgress" class="progress ctrl-progress" value="70" max="100">70 %</progress>
+
+    </div>
+  </body>
+</html>
