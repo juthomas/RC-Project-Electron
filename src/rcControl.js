@@ -1,3 +1,21 @@
+
+window.addEventListener("gamepadconnected", function(e) {
+	console.log("Contrôleur n°%d connecté : %s. %d boutons, %d axes.",
+	e.gamepad.index, e.gamepad.id,
+	e.gamepad.buttons.length, e.gamepad.axes.length);
+  });
+  var controllers = {};
+
+  function scangamepads() {
+	var gamepads = navigator.getGamepads ? navigator.getGamepads() : (navigator.webkitGetGamepads ? navigator.webkitGetGamepads() : []);
+	for (var i = 0; i < gamepads.length; i++) {
+	  if (gamepads[i]) {
+
+		  controllers[gamepads[i].index] = gamepads[i];
+	  }
+	}
+  }
+
 document.addEventListener("DOMContentLoaded", function(event) {
 	// Your code to run since DOM is loaded and ready
 	console.log("document loaded");
@@ -13,6 +31,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	const leftProgress = document.getElementById('leftProgress');
 	const rightProgress = document.getElementById('rightProgress');
 
+	const ipAddr = document.getElementById('ipAddr');
+	const port = document.getElementById('port');
+	const udpActivated = document.getElementById('sendUdp');
+
 	var eventTarget = new EventTarget();
 
 	let accelValue = 0;
@@ -22,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	const minTurn = -100;
 	const maxTurn = 100;
 	const stepValue = 5;
-
 	let accelModifier = 0;
 	let turnModifier = 0;
 
@@ -172,11 +193,23 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		downProgress.value = -accelValue > 0 ? -accelValue : 0;
 		leftProgress.value = turnValue > 0 ? turnValue : 0;
 		rightProgress.value = -turnValue > 0 ? -turnValue : 0;
-		// console.log(accelValue);
-		ipcRenderer.send('control:data', {
-			'accelValue':accelValue,
-			'turnValue':turnValue});
-	}, 50);
+		// console.log("port", port.value, "ip", ipAddr.value);
+		// console.log("activate", udpActivated.checked);
+		if (udpActivated.checked == true)
+		{
+
+			ipcRenderer.send('control:data', {
+				'accelValue':accelValue,
+				'turnValue':turnValue,
+				'port': parseInt(port.value, 10),
+				'ip': ipAddr.value
+			});
+		}
+		scangamepads();
+		// console.log(controllers);
+		gamepadAccel = controllers[0].buttons[7];
+		console.log(gamepadAccel);
+	}, 500);
 
 });
 

@@ -18,6 +18,10 @@ video {
   }
 }
 
+.port-div {
+  position: absolute;
+}
+
 .ctrl-div {
   margin-top: 100px;
   position: relative;

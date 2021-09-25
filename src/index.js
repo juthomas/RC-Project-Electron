@@ -1,5 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
+var dgram = require('dgram');
+
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -22,9 +24,9 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 
-  mainWindow.on('closed', function(){
-		app.quit();
-	})
+  mainWindow.on('closed', function () {
+    app.quit();
+  })
 };
 
 // This method will be called when Electron has finished
@@ -41,10 +43,39 @@ app.on('window-all-closed', () => {
   }
 });
 
-ipcMain.on('control:data', function(e, item){
-	console.log(item);
-	// mainWindow.webContents.send('item:add', item);
-	// addWindow.close();
+ipcMain.on('control:data', function (e, item) {
+  console.log(item);
+  var client = dgram.createSocket('udp4');
+
+  let data = Buffer.from('ACCEL' + parseInt(item.accelValue, 10) + 'TURN' + parseInt(item.turnValue, 10));
+
+  try {
+
+    client.send(data, item.port, item.ip, function (error) {
+      if (error) {
+        client.close();
+      } else {
+        console.log('Data sent !!!');
+        client.close();
+      }
+    });
+  } catch (e) {
+    console.log(e);
+
+  }
+// client.destroy();
+  // data = Buffer.from('SERVO1ANGLE'+ parseInt(item.turnValue, 10));
+
+  // client.send(data,item.port,item.ip,function(error){
+  //   if(error){
+  //     client.close();
+  //   }else{
+  //     console.log('Data sent !!!');
+  //   }
+  // });
+
+  // mainWindow.webContents.send('item:add', item);
+  // addWindow.close();
 })
 
 app.on('activate', () => {
