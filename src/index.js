@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -21,6 +21,10 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  mainWindow.on('closed', function(){
+		app.quit();
+	})
 };
 
 // This method will be called when Electron has finished
@@ -36,6 +40,12 @@ app.on('window-all-closed', () => {
     app.quit();
   }
 });
+
+ipcMain.on('control:data', function(e, item){
+	console.log(item);
+	// mainWindow.webContents.send('item:add', item);
+	// addWindow.close();
+})
 
 app.on('activate', () => {
   // On OS X it's common to re-create a window in the app when the

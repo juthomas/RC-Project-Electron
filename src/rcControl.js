@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 	// Your code to run since DOM is loaded and ready
 	console.log("document loaded");
+	const {ipcRenderer} = require('electron');
+
 	const upButton = document.getElementById('upButton');
 	const downButton = document.getElementById('downButton');
 	const leftButton = document.getElementById('leftButton');
@@ -136,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 				accelValue = accelValue + stepValue > 0 ? 0 : accelValue + stepValue;
 			}
 		}
-		console.log("turn modifier :", turnModifier);
+		// console.log("turn modifier :", turnModifier);
 		if (turnModifier)
 		{
 			if (turnModifier > 0)
@@ -170,7 +172,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		downProgress.value = -accelValue > 0 ? -accelValue : 0;
 		leftProgress.value = turnValue > 0 ? turnValue : 0;
 		rightProgress.value = -turnValue > 0 ? -turnValue : 0;
-		console.log(accelValue);
+		// console.log(accelValue);
+		ipcRenderer.send('control:data', {
+			'accelValue':accelValue,
+			'turnValue':turnValue});
 	}, 50);
 
 });
