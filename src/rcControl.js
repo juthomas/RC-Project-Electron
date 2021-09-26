@@ -21,6 +21,8 @@ function scangamepads() {
 var currentControllerId = undefined;
 
 function selectInput(input){
+	inputSelectBtn.innerText = input.id;
+
 	if (input.id == "keyboard")
 	{
 		currentControllerId = undefined;
@@ -36,6 +38,7 @@ inputSelectBtn.onclick = getInputSources;
 
 function getInputSources() {
 	scangamepads();
+
 
 	const inputOptionsMenu = Menu.buildFromTemplate(
 		controllers.map(input => {
