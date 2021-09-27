@@ -1,0 +1,120 @@
+
+.gameboy .controls {
+  display: flex;
+  justify-content: space-between;
+}
+.gameboy .controls .dpad {
+  position: relative;
+  display: inline-block;
+  width: 90px;
+  height: 90px;
+  z-index: 5;
+}
+.gameboy .controls .dpad > * {
+  width: 33%;
+  height: 33%;
+  position: absolute;
+  background-color: #565e6a;
+  cursor: pointer;
+}
+
+.gameboy .controls .dpad .up {
+  top: calc(0% + 1px);
+  left: 33%;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 5px 5px 0px 0px;
+}
+.gameboy .controls .dpad .up:active {
+  background: linear-gradient(to top, #565e6a 0%, #333 100%);
+}
+
+.gameboy .controls .dpad .right {
+  top: 33%;
+  left: calc(66% - 1px);
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 0px 5px 5px 0px;
+  box-shadow: 0px -2px 0px #888 inset;
+}
+.gameboy .controls .dpad .right:active {
+  background: linear-gradient(to right, #565e6a 0%, #333 100%);
+}
+
+.gameboy .controls .dpad .down {
+  top: calc(66% - 1px);
+  left: 33%;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 0px 0px 5px 5px;
+  box-shadow: 0px -2px 0px #888 inset;
+}
+.gameboy .controls .dpad .down:active {
+  background: linear-gradient(to bottom, #565e6a 0%, #333 100%);
+}
+.gameboy .controls .dpad .left {
+  top: 33%;
+  left: calc(0% + 1px);
+  border-top: 1x solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  border-radius: 5px 0px 0px 5px;
+  box-shadow: 0px -2px 0px #888 inset;
+}
+
+.gameboy .controls .dpad .left:active {
+  background: linear-gradient(to left, #565e6a 0%, #333 100%);
+}
+.gameboy .controls .dpad .middle {
+  top: 32%;
+  left: 33%;
+  z-index: -5;
+}
+.gameboy .controls .dpad .middle::after {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  display: inline-block;
+  border: 1px solid #6e737a;
+  background: linear-gradient(to bottom, #6d7075 0%, #6d7075 30%, #23272f 70%, #23272f 100%);
+  border-radius: 50%;
+  height: 60%;
+  width: 60%;
+}
+.gameboy .controls .dpad .up-down {
+  background-color: #565e6a;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 20px;
+  height: 60px;
+}
+.gameboy .controls .dpad .left-right {
+  background-color: #565e6a;
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 60px;
+  height: 20px;
+}
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  padding: 30px;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to top, #aaa 0%, white 100%);
+}

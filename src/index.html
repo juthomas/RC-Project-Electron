@@ -3,11 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <title>RC Project</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css"
-    />
     <link rel="stylesheet" href="index.css" />
+    <link href="./style2.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
     <script defer src="render.js"></script>
     <script defer src="rcControl.js"></script>
   </head>
@@ -22,34 +20,46 @@
 
     <hr />
 
-    <button id="videoSelectBtn" class="button is-text">
-      Choose a Video Source
-    </button>
-    <button id="cameraSelectBtn" class="button is-text">
-      Choose a Camera Source
-    </button>
-    <button id="inputSelectBtn" class="button is-text">
-      Choose a Input Source
-    </button>
+    <div class="inputSources">
 
+      <button id="videoSelectBtn" class="button is-text">
+        Choose a Video Source
+      </button>
+      <button id="cameraSelectBtn" class="button is-text">
+        Choose a Camera Source
+      </button>
+      <button id="inputSelectBtn" class="button is-text">
+        Choose a Input Source
+      </button>
+      
+      
+      <input class="checkbox" type="checkbox" name="sendUdp" id="sendUdp">
+      <label for="sendUdp">Activate UDP</label>
+    </div>
 
-    <input class="checkbox" type="checkbox" name="sendUdp" id="sendUdp">
-    <label for="sendUdp">Activate UDP</label>
     <div class="port-div">
 
       <input class="input" type="text" name="" id="ipAddr" placeholder="ip address" value="rc.local">
       <input class="input" type="text" name="" id="port" placeholder="port" value="49161">
     </div>
     <div class="ctrl-div">
-      <button id="upButton" class="button ctrl-button">UP</button>
-      <button id="downButton" class="button ctrl-button">DOWN</button>
-      <button id="leftButton" class="button ctrl-button">LEFT</button>
-      <button id="rightButton" class="button ctrl-button">RIGHT</button>
+      <div class="gameboy" id="GameBoy">
+        <div class="controls">
+          <div class="dpad">
+            <div class="up" id="upButton" ><i class="fa fa-caret-up"></i></div>
+            <div class="right" id="rightButton"><i class="fa fa-caret-right"></i></div>
+            <div class="down" id="downButton"><i class="fa fa-caret-down"></i></div>
+            <div class="left" id="leftButton"><i class="fa fa-caret-left"></i></div>
+            <div class="middle"></div>
+          </div>
+        </div>
+      </div>
+      <div class="progress_div">
       <progress id="upProgress" class="progress ctrl-progress" value="70" max="100">70 %</progress>
       <progress id="downProgress" class="progress ctrl-progress" value="70" max="100">70 %</progress>
       <progress id="leftProgress" class="progress ctrl-progress" value="70" max="100">70 %</progress>
-      <progress id="rightProgress" class="progress ctrl-progress" value="70" max="100">70 %</progress>
-
+       <progress id="rightProgress" class="progress ctrl-progress" value="70" max="100">70 %</progress>
+      </div>
     </div>
   </body>
 </html>
